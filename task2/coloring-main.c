@@ -75,7 +75,11 @@ char* readFile (char* filename) {
     int i;
     for (i = 0; i < width * height; i++) {
         fscanf(fptr, "%u%u%u", &r, &g, &b);
-
+        if (rgb_component != 255) {
+            r = (r * 256)/rgb_component;
+            g = (g * 256)/rgb_component;
+            b = (b * 256)/rgb_component; 
+        }
         image[index] = (r);
         image[index+1] = (g);
         image[index+2] = (b);
